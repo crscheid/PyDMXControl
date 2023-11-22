@@ -79,7 +79,8 @@ class FixtureHelpers:
             else:
                 self.set_channel(channel, int(target_value))
                 self.controller.ticker.remove_callback(callback)
-                self.__callbacks.remove(callback)
+                if callback in self.__callbacks:
+                    self.__callbacks.remove(callback)
 
         # Append to the tracking list
         self.__callbacks.append(callback)
